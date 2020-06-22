@@ -49,21 +49,32 @@ export default class LoginComponent extends React.Component{
         var token = localStorage.getItem('token');
 
         if (!token) {
+            
             return (
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Name: <input type="text" value={this.state.username} onChange={this.handleChangeUsername} />
-                        Password: <input type="password" value={this.state.password} onChange={this.handleChangePassword} />
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
+                <div class="login">
+
+                    <h2 class="login-header"><b>Lista de itens usando Django e React</b></h2>
+
+                    <div class="login-triangle"></div>
+                    
+                    <h2 class="login-header">Log in</h2>
+                    
+                    <form onSubmit={this.handleSubmit} class="login-container">
+                        <p><input type="text" value={this.state.username} onChange={this.handleChangeUsername} placeholder="Usuário" /></p>
+                        <p><input type="password" value={this.state.password} onChange={this.handleChangePassword} placeholder="Senha" /></p>
+                        <p><input type="submit" value="Log in" /></p>
+                    </form>
+                </div>
             )
         }
         else {
             return (
-                <div>
+                <div class="login">
                     <UserLists />
-                    <button onClick={() => this.logout()}> Logout </button>
+                    <div class="button-container">
+                        <p><input onClick={() => this.logout()} type="submit" value="Logout" /></p>
+                    </div>
+
                 </div>
             )
             
